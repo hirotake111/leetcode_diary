@@ -6,38 +6,59 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+    def __str__(self) -> str:
+        return f"{self.val}"
 
 
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         carry = 0
-        li1 = node_to_list(l1)
-        li2 = node_to_list(l2)
-        length = max(len(li1), len(li2))
-        li1 += (length - len(li1)) * [0]
-        li2 += (length - len(li2)) * [0]
-        result = length * [0]
-        for i in range(length):
-            c, v = divmod(li1[i] + li2[i], 10)
-            result[i] = v + carry 
+        entry = ListNode()
+        node = entry
+        while True:
+            if l1 is None and l2 is None:
+                break
+
+            if l1 is None:
+                # we only have l2 now
+                c, val = divmod(l2.val + carry, 10)
+                node.val = val
+                carry = c
+                if l2.next is None:
+                    break
+                l2 = l2.next
+                node.next = ListNode()
+                node = node.next
+                continue
+
+            if l2 is None:
+                # we only have l1 now
+                c, val = divmod(l1.val + carry, 10)
+                node.val = val
+                carry = c
+                if l1.next is None:
+                    break
+                l1 = l1.next
+                node.next = ListNode()
+                node = node.next
+                continue
+
+            # we have l1 and l2 here
+            c, val = divmod(l1.val + l2.val + carry, 10)
             carry = c
-        return list_to_node(result)
-        # result = ListNode()
-        # node = result
-        # carry = 0
-
-        # while True:
-        #     c, v = divmod(l1.val or 0 + l2.val or 0, 10)
-        #     node.val = v +carry
-        #     carry = c
-        #     if l1.next is None or l2.next is None:
-        #         break
-        #     l1 = l1.next
-        #     l2 = l2.next
-        #     node.next = ListNode()
-        #     node = node.next
-
-        # return result
+            node.val = val
+            if l1.next is None and l2.next is None:
+                break
+            l1 = l1.next
+            l2 = l2.next
+            node.next = ListNode()
+            node = node.next
+        
+        if carry == 1:
+            node.next = ListNode()
+            node.next.val = 1
+        
+        return entry
 
 
 def list_to_node(l: List[int]):
@@ -79,17 +100,17 @@ class TestSolution(TestCase):
         node = list_to_node([1,2,3])
         self.assertEqual(node_to_list( node), [1,2,3])
 
-    # def test_input(self):
-    #     l1 = list_to_node([2,4,3])
-    #     l2 = list_to_node([5,6,4])
-    #     node = self.s.addTwoNumbers(l1, l2)
-    #     self.assertEqual(node_to_list(node), [7,0,8])
+    def test_input(self):
+        l1 = list_to_node([2,4,3])
+        l2 = list_to_node([5,6,4])
+        node = self.s.addTwoNumbers(l1, l2)
+        self.assertEqual(node_to_list(node), [7,0,8])
     
     def test_input2(self):
         l1 = list_to_node([9,9,9,9,9,9,9])
         l2 = list_to_node([9,9,9,9])
         node = self.s.addTwoNumbers(l1, l2)
-        self.assertEqual(node_to_list(node), [7,0,8])
+        self.assertEqual(node_to_list(node), [8,9,9,9,0,0,0,1])
 
 
 
