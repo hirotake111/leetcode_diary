@@ -16,7 +16,7 @@ class Solution:
         m = {")": "(", "}": "{", "]": "["}
         for c in s:
             if c in [")", "}", "]"]:
-                if stack[-1] != m[c]:
+                if len(stack) == 0 or stack[-1] != m[c]:
                     return False
                 stack.pop()
                 continue
