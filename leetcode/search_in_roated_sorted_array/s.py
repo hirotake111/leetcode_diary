@@ -1,13 +1,6 @@
 from typing import List
 from unittest import main, TestCase
 
-"""
-[4, 5, 6, 7, 0, 1, 2] num[0]==4, num[-1]==2
-mini==0, maxi==7
-
-
-"""
-
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
