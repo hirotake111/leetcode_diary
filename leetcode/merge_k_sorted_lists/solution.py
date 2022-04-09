@@ -1,5 +1,4 @@
-import re
-from typing import List, Optional, cast
+from typing import List, Optional
 from unittest import main, TestCase
 
 # Definition for singly-linked list.
