@@ -58,9 +58,6 @@ class UndergroundSystem:
         amount, count = self._record_db[(startStation, endStation)]
         return amount / count
 
-    def _get_key(self, startStation: str, endStation: str) -> str:
-        return f"{startStation}_{endStation}"
-
 
 class TestSolution(TestCase):
     def test_solution(self):
