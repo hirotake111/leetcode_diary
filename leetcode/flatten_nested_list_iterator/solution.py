@@ -40,7 +40,7 @@ class NestedIterator:
             if item.isInteger():
                 return item.getInteger()
             else:
-                # value is an another nested list
+                # item is List[NestedInteger] -> add all child items to stackß
                 for child_item in item.getList()[::-1]:
                     self.stack.append(child_item)
                 return self.next()
@@ -49,6 +49,7 @@ class NestedIterator:
         item = self.nested_list.pop(0)
         if item.isInteger():
             return item.getInteger()
+        # item is List[NestedInteger] -> add all child items to stack
         for child_item in item.getList()[::-1]:
             self.stack.append(child_item)
         return self.next()
