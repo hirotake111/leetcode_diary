@@ -1,4 +1,5 @@
 from unittest import main, TestCase
+from typing import Set
 
 
 # def debug(s: str, i: int, j: int):
@@ -7,7 +8,8 @@ from unittest import main, TestCase
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        seen, longest, j = set(), 0, 0
+        longest, j = 0, 0
+        seen: Set[str] = set()
 
         for i in range(len(s)):
             if s[i] in seen:  # we have seen s[i] before
