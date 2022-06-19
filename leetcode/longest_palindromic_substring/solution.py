@@ -5,6 +5,7 @@ from unittest import TestCase, main
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         def func(left: int, right: int, longest: str) -> str:
+            """returns the longest palindromic substring using left and right index"""
             longest_length = len(longest)
             while 0 <= left and right < l and s[left] == s[right]:
                 length = right - left + 1
