@@ -1,22 +1,5 @@
-from re import sub
-from typing import Dict, List, Set, Tuple, Optional
-from typing_extensions import Self
+from typing import Dict, List, Set, Tuple
 from unittest import TestCase, main
-
-
-class Trie:
-    ch: str
-    next: Optional["Trie"]
-
-    def __init__(self, word: str) -> None:
-        ch = word[0]
-        rest = word[1:]
-        self.ch = ch
-        if len(rest) > 0:
-            self.next = Trie(word=rest)
-        else:
-            self.next = None
-
 
 class Solution:
     def minimumLengthEncoding(self, words: List[str]) -> int:
