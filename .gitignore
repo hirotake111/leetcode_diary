@@ -130,3 +130,7 @@ dmypy.json
 
 # npm packages
 node_modules
+
+# c++ files
+solution
+solution.dSYM/
