@@ -8,19 +8,24 @@ class Solution:
     def maxArea(
         self, h: int, w: int, horizontalCuts: List[int], verticalCuts: List[int]
     ) -> int:
-        def find_max(arr: List[int], edge: int):
-            max_length, prev = 0, 0
-            heapify(arr)
-            while arr:
-                elm = heappop(arr)
-                max_length = max(max_length, elm - prev)
-                prev = elm
-            return max(max_length, edge - prev)
-
-        max_h = find_max(horizontalCuts, h)
-        max_w = find_max(verticalCuts, w)
-
+        arr_h = [0] + sorted(horizontalCuts) + [h]
+        arr_w = [0] + sorted(verticalCuts) + [w]
+        max_h = max(arr_h[i + 1] - arr_h[i] for i in range(len(arr_h) - 1))
+        max_w = max([arr_w[i + 1] - arr_w[i] for i in range(len(arr_w) - 1)])
         return (max_h * max_w) % 1000000007
+        # def find_max(arr: List[int], edge: int):
+        # max_length, prev = 0, 0
+        # heapify(arr)
+        # while arr:
+        # elm = heappop(arr)
+        # max_length = max(max_length, elm - prev)
+        # prev = elm
+        # return max(max_length, edge - prev)
+
+        # max_h = find_max(horizontalCuts, h)
+        # max_w = find_max(verticalCuts, w)
+
+        # return (max_h * max_w) % 1000000007
 
 
 class Test(TestCase):
