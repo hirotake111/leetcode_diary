@@ -5,7 +5,6 @@ from unittest import TestCase, main
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         answer: List[List[int]] = [[1], [1, 1]]
-        length = 2
         if numRows == 1:
             return [[1]]
         if numRows == 2:
