@@ -6,26 +6,26 @@ from unittest import TestCase, main
 
 class Solution:
     def findSubstring(self, s: str, words: List[str]) -> List[int]:
-        word_length, s_length = len(words[0]), len(s)
+        word_length, words_length, s_length = len(words[0]), len(words), len(s)
         word_counts = Counter(words)
         answer: List[int] = []
 
         def func(idx: int):
-            word = s[idx : idx + word_length]
-            if word not in word_counts:
+            sub = s[idx : idx + word_length]
+            if sub not in word_counts:
                 return False
-            counts = word_counts.copy()
-            while True:
-                if word not in counts or counts[word] == 0:
-                    break
-                counts[word] -= 1
-                idx += word_length
-                word = s[idx : idx + word_length]
-            if sum(counts.values()) == 0:
-                return True
-            return False
 
-        for i in range(0, s_length - word_length + 1):
+            counts = word_counts.copy()
+            words_used = 0
+            while sub in counts and counts[sub] > 0:
+                counts[sub] -= 1
+                idx += word_length
+                sub = s[idx : idx + word_length]
+                words_used += 1
+
+            return True if words_used == words_length else False
+
+        for i in range(s_length - word_length + 1):
             if func(i):
                 answer.append(i)
 
@@ -34,6 +34,11 @@ class Solution:
 
 class Test(TestCase):
     data: List[Tuple[str, List[str], List[int]]] = [
+        (
+            "lingmindraboofooowingdingbarrwingmonkeypoundcake",
+            ["fooo", "barr", "wing", "ding", "wing"],
+            [13],
+        ),
         ("a", ["a"], [0]),
         ("barfoothefoobarman", ["foo", "bar"], [0, 9]),
         ("wordgoodgoodgoodbestword", ["word", "good", "best", "word"], []),
