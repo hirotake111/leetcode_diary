@@ -1,6 +1,6 @@
 # my-coding-practice-playground
 
-My coding practice playground!
+This is just a place where I put my answer for LeetCode daily challenge as my daily routine.
 
 ### Useful links
 
