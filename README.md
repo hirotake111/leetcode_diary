@@ -1,6 +1,6 @@
-# my-coding-practice-playground
+# My LeetCode Diary
 
-This is just a place where I put my answer for LeetCode daily challenge as my daily routine 😊
+A place where I put my answer for LeetCode daily challenge as my daily routine 😊
 
 ### Useful links
 
