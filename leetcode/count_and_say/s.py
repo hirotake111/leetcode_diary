@@ -1,5 +1,4 @@
-from collections import Counter
-from unittest import main, TestCase
+from unittest import TestCase, main
 
 
 class Solution:
@@ -7,10 +6,10 @@ class Solution:
         ans = "1"
         while n > 1:
             tmp = ""
-            current = None
+            current = ""
             count = 0
             for c in ans:
-                if current is None:  # set current
+                if current is "":  # set current
                     current = c
                     count += 1
                     continue
