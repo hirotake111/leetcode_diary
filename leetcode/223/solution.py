@@ -31,4 +31,4 @@ class Solution:
             return area_a + area_b
 
         # now we can say those rectables are overlapped.
-        return area_a + area_b + (x_overlap * y_overlap)
+        return area_a + area_b - (x_overlap * y_overlap)
