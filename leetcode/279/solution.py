@@ -23,13 +23,13 @@ class Solution:
                 # pick up one from candidate list
                 for candidate in candidates:
                     rest = queue_value - candidate
-                    # if already visited, go to the next value
+                    # if already visited, go to the next candidate
                     if rest in visited:
                         continue
                     # if the rest equals 0, then we find the answer -> return count
                     if rest == 0:
                         return count
-                    # if rest is less than 0, we no longer need to iterate over candidate list -> move to the next queue_value
+                    # if rest is less than 0, we don't need to move to the next candiate -> move to the next queue_value
                     if rest < 0:
                         break
                     # we can still subtract it with one of candidates -> add it to the queue
