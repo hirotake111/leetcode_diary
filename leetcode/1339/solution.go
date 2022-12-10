@@ -14,35 +14,43 @@ func max(a, b int) int {
 }
 
 type Solution struct {
-	total   int
+	Node    *TreeNode
+	Total   int
 	Product int
 }
 
-func (s *Solution) getTotal(node *TreeNode) {
-	var dfs func(*TreeNode) int
-	dfs = func(node *TreeNode) int {
-		if node == nil {
-			return 0
-		}
-		return dfs(node.Left) + dfs(node.Right) + node.Val
-	}
-	s.total = dfs(node)
-}
-
-func (s *Solution) getProduct(node *TreeNode) int {
+func (s *Solution) getTotal(node *TreeNode) int {
 	if node == nil {
 		return 0
 	}
-	currentSum := s.getProduct(node.Left) + s.getProduct(node.Right) + node.Val
-	product := currentSum * (s.total - currentSum)
+	return s.getTotal(node.Left) + s.getTotal(node.Right) + node.Val
+}
+
+func (s *Solution) UpdateTotal() {
+	s.Total = s.getTotal(s.Node)
+}
+
+func (s *Solution) GetProduct(node *TreeNode) int {
+	if node == nil {
+		return 0
+	}
+	currentSum := s.GetProduct(node.Left) + s.GetProduct(node.Right) + node.Val
+	product := currentSum * (s.Total - currentSum)
 	s.Product = max(s.Product, product)
 	return currentSum
 }
+func (s *Solution) UpdateProdct() {
+	s.UpdateTotal()
+	s.GetProduct(s.Node)
+}
+
+func NewSolution(root *TreeNode) Solution {
+	s := Solution{Total: 0, Product: 0, Node: root}
+	s.UpdateProdct()
+	return s
+}
 
 func maxProduct(root *TreeNode) int {
-	s := Solution{total: 0, Product: 0}
-	s.getTotal(root)
-	s.getProduct(root)
-
+	s := NewSolution(root)
 	return s.Product % 1000000007
 }
