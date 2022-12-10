@@ -13,30 +13,36 @@ func max(a, b int) int {
 	return a
 }
 
-func getTotal(node *TreeNode) int {
-	if node == nil {
-		return 0
-	}
-	return getTotal(node.Left) + getTotal(node.Right) + node.Val
+type Solution struct {
+	total   int
+	Product int
 }
 
-var total int
-var product int
+func (s *Solution) getTotal(node *TreeNode) {
+	var dfs func(*TreeNode) int
+	dfs = func(node *TreeNode) int {
+		if node == nil {
+			return 0
+		}
+		return dfs(node.Left) + dfs(node.Right) + node.Val
+	}
+	s.total = dfs(node)
+}
 
-func getProduct(node *TreeNode) int {
+func (s *Solution) getProduct(node *TreeNode) int {
 	if node == nil {
 		return 0
 	}
-	currentSum := getProduct(node.Left) + getProduct(node.Right) + node.Val
-	cur_product := (total - currentSum) * currentSum
-	product = max(product, cur_product)
+	currentSum := s.getProduct(node.Left) + s.getProduct(node.Right) + node.Val
+	product := currentSum * (s.total - currentSum)
+	s.Product = max(s.Product, product)
 	return currentSum
 }
 
 func maxProduct(root *TreeNode) int {
+	s := Solution{total: 0, Product: 0}
+	s.getTotal(root)
+	s.getProduct(root)
 
-	total = getTotal(root)
-	product = 0
-	getProduct(root)
-	return product % 1000000007
+	return s.Product % 1000000007
 }
