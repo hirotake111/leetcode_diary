@@ -28,5 +28,4 @@ fi
 
 mkdir $NEW_DIR
 cd $NEW_DIR
-touch solution.py
 echo "done!"
