@@ -39,7 +39,7 @@ class Solution:
                 continue
             # If the value in dict and the value in strs are not the same,
             # return false
-            if value_in_dict == value:
+            if value_in_dict != value:
                 return False
 
         # We passed all the test -> return true
