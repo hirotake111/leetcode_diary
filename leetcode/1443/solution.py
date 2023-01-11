@@ -23,28 +23,25 @@ class Solution:
 
         # Create a graph using edges
         graph: List[List[int]] = [[] for _ in range(n)]
-        for a, b in edges:
-            if b not in graph[a]:
-                graph[a].append(b)
-            if a not in graph[b]:
-                graph[b].append(a)
+        for edge_a, edge_b in edges:
+            if edge_b not in graph[edge_a]:
+                graph[edge_a].append(edge_b)
+            if edge_a not in graph[edge_b]:
+                graph[edge_b].append(edge_a)
 
-        def dfs(idx: int, parent_idx: int) -> int:
-            """
-            idx: index of the current edge.
-            parent_idx: index of the parent edge. We can use it to prevent going back to the parent.
-            """
+        def dfs(current: int, parent: int) -> int:
             sub_total = 0
 
-            for edge_idx in graph[idx]:
+            for child in graph[current]:
                 # If child == parent, do nothing to prevent going back to the parent
                 # If not, this should be an index of a child edge
-                if edge_idx != parent_idx:
-                    sub_total += dfs(edge_idx, idx)
+                # -> perform dfs and add the result to sub total
+                if child != parent:
+                    sub_total += dfs(child, current)
 
             # If the edge has apples in it, or  if children has apples,
             # we need to visit it -> add extra 2
-            if hasApple[idx] or 0 < sub_total:
+            if hasApple[current] or 0 < sub_total:
                 return sub_total + 2
             # Else, this edge has no apples, or no children that have apples.
             # So we don't have to visit this edge -> just return 0
