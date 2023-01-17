@@ -12,21 +12,16 @@ Return the minimum number of flips to make s monotone increasing.
 
 class Solution:
     def minFlipsMonoIncr(self, s: str) -> int:
-        i = 0
-
-        # Remove all zeroes on the left size (as we can ignore it)
-        while s[i] == "0":
-            i += 1
-        s = s[i:]
-
-        # left: num of ones on the left window
-        # right: num of zeroes on the right window
-        left, right = 0, s.count("0")
+        left = 0  # num of ones on the left window
+        right = s.count("0")  # num of zeroes on the right window
         answer = right
+
         for n in s:
-            if n == "0":  # decrease right window
+            if n == "0":
+                # decrease right window
                 right -= 1
-            else:  # n == 1 -> increase left window
+            else:
+                # n == 1 -> increase left window
                 left += 1
             answer = min(answer, left + right)
 
