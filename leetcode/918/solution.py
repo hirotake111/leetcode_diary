@@ -14,8 +14,7 @@ from unittest import TestCase, main
 
 class Solution:
     def maxSubarraySumCircular(self, nums: List[int]) -> int:
-        i, answer = 0, nums[0]
-        summary = sum(nums)
+        answer, summary = nums[0], sum(nums)
 
         # short cuts
         if 0 <= min(nums):
@@ -24,24 +23,16 @@ class Solution:
             return max(nums)
 
         total = 0
-        while i < len(nums):
-            if total < 0:
-                # Ignore and reset previous total
-                total = 0
-            total += nums[i]
+        for v in nums:
+            total = max(total, 0) + v
             answer = max(answer, total)
-            i += 1
 
         # Instead of seeing nums as circular array,
         # let's find a minimum subarray
-        i, total = 0, 0
-        while i < len(nums):
-            if 0 < total:
-                # Ignore and reset previous total
-                total = 0
-            total += nums[i]
+        total = 0
+        for v in nums:
+            total = min(total, 0) + v
             answer = max(answer, summary - total)
-            i += 1
 
         return answer
 
