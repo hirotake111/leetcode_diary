@@ -11,7 +11,7 @@ A subarray may only include each element of the fixed buffer nums at most once. 
 package main
 
 func maxSubarraySumCircular(nums []int) int {
-	i, answer := 0, nums[0]
+	answer := nums[0]
 	summary := sum(&nums)
 	maximum := max(nums[0], nums...)
 
@@ -30,6 +30,14 @@ func maxSubarraySumCircular(nums []int) int {
 		}
 		total += v
 		answer = max(answer, total)
+	}
+	total = 0
+	for _, v := range nums {
+		if 0 < total {
+			total = 0
+		}
+		total += v
+		answer = max(answer, summary-total)
 	}
 
 	return answer
