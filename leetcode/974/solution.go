@@ -14,18 +14,10 @@ func subarraysDivByK(nums []int, k int) int {
 	answer, sum := 0, 0
 
 	for _, n := range nums {
-		sum = (((sum + nums[n]) % k) + k) % k
+		sum = (((sum + n) % k) + k) % k
 		counts := prefixSums[sum]
 		answer += counts
 		prefixSums[sum]++
 	}
 	return answer
-}
-
-func abs(a int) int {
-	if a < 0 {
-		return a * -1
-	}
-	return a
-
 }
