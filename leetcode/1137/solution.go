@@ -10,20 +10,13 @@ Given n, return the value of Tn.
 package main
 
 func tribonacci(n int) int {
-	if n == 0 {
-		return 0
+	arr := []int{0, 1, 1}
+	if n < 3 {
+		return arr[n]
 	}
-	if n <= 2 {
-		return 1
+	for i := 3; i <= n; i++ {
+		arr[i%3] = arr[0] + arr[1] + arr[2]
 	}
-	a, b, c, d := 0, 1, 1, 0
-	for 2 < n {
-		a = b
-		b = c
-		c = d
-		d = a + b + c
-		n--
-	}
-	return d
 
+	return arr[n%3]
 }
