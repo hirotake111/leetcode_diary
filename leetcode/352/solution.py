@@ -25,32 +25,29 @@ class SummaryRanges:
             return
 
         low, high = 0, len(self.arr) - 1
-        if self.arr[high] <= value:
-            if self.arr[high] < value:
-                self.arr.append(value)
-            return
-        elif value <= self.arr[low]:
-            if value < self.arr[low]:
-                self.arr.insert(0, value)
-            return
 
         while True:
             mid = (high - low) // 2 + low
-            if value == self.arr[mid]:
+
+            if value == self.arr[low] or value == self.arr[high]:
                 return
 
-            elif value < self.arr[mid]:
-                if low + 1 == mid:
-                    break
-                high = mid
-                continue
+            if value < self.arr[low]:
+                self.arr.insert(low, value)
+                return
 
-            if mid + 1 == high:
-                mid += 1
-                break
-            low = mid
+            if self.arr[high] < value:
+                self.arr.insert(high + 1, value)
+                return
 
-        self.arr.insert(mid, value)
+            if low + 1 == high:
+                self.arr.insert(high, value)
+                return
+
+            if value < self.arr[mid]:
+                high = mid - 1
+            else:
+                low = mid + 1
 
     def getIntervals(self) -> List[List[int]]:
         prev: Optional[int] = None
@@ -67,3 +64,12 @@ class SummaryRanges:
 
         answer.append(cur)
         return answer
+
+
+s = SummaryRanges()
+s.addNum(1)
+s.addNum(3)
+s.addNum(7)
+s.addNum(2)
+s.addNum(6)
+print(s.getIntervals())
