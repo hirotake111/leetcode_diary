@@ -13,6 +13,7 @@ func checkInclusion(s1 string, s2 string) bool {
 		return false
 	}
 
+	// Sliding window approach
 	arr1, arr2 := make([]int, 26), make([]int, 26)
 	// Populate frequency of s1 and s2
 	for i, c1 := range s1 {
