@@ -16,26 +16,18 @@ Open brackets must be closed in the correct order.
 class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
-        m = {")": "(", "}": "{", "]": "["}
         for c in s:
-            if c in [")", "}", "]"]:
-                if len(stack) == 0 or stack[-1] != m[c]:
-                    return False
+            if c in "([{":
+                stack.append(c)
+            elif not stack:
+                return False
+            elif c == "}" and stack[-1] == "{":
                 stack.pop()
-                continue
-            stack.append(c)
+            elif c == ")" and stack[-1] == "(":
+                stack.pop()
+            elif c == "]" and stack[-1] == "[":
+                stack.pop()
+            else:
+                return False
 
-        return True if len(stack) == 0 else False
-
-
-class TestSolution(TestCase):
-    s = Solution()
-
-    def test_solution(self):
-        self.assertEqual(self.s.isValid(s="()"), True)
-        self.assertEqual(self.s.isValid(s="()[]{}"), True)
-        self.assertEqual(self.s.isValid(s="(]"), False)
-
-
-if __name__ == "__main__":
-    main()
+        return False if stack else True
