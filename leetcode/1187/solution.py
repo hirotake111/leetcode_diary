@@ -16,15 +16,15 @@ class Solution:
     def makeArrayIncreasing(self, arr1: List[int], arr2: List[int]) -> int:
         MAX = 10**9 + 1
         arr2 = sorted(set(arr2))
-        lru_cache(None)
 
+        @lru_cache(None)
         def dfs(i, prev):
             if i >= len(arr1):
                 return 0
             j = bisect_right(arr2, prev)
+            do_nothing = dfs(i + 1, arr1[i]) if prev < arr1[i] else MAX
             swap = 1 + dfs(i + 1, arr2[j]) if j < len(arr2) else MAX
-            noswap = dfs(i + 1, arr1[i]) if arr1[i] > prev else MAX
-            return min(swap, noswap)
+            return min(swap, do_nothing)
 
         changes = dfs(0, -1)
         return changes if changes != MAX else -1
