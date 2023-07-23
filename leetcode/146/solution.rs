@@ -103,8 +103,8 @@ impl DoublyLinkedList {
     }
 
     pub fn remove(&mut self, node: Rc<RefCell<LinkedNode>>) -> i32 {
-        let prev = node.borrow().prev.clone();
-        let next = node.borrow().next.clone();
+        let prev = self.get_prev(Rc::clone(&node));
+        let next = self.get_next(Rc::clone(&node));
         let key = node.borrow().key;
         match (prev, next) {
             (Some(prev), Some(next)) => {
@@ -113,12 +113,12 @@ impl DoublyLinkedList {
                 next.borrow_mut().prev.replace(Rc::clone(&prev));
             }
             (Some(prev), None) => {
-                // doesn't have next -> the node should be the tail
+                // The node should be the tail
                 prev.borrow_mut().next.take();
                 self.tail.replace(Rc::clone(&prev));
             }
             (None, Some(next)) => {
-                // doesn't ave prev -> the node should be the head
+                // The node should be the head
                 next.borrow_mut().prev.take();
                 self.head.replace(Rc::clone(&next));
             }
@@ -129,6 +129,20 @@ impl DoublyLinkedList {
             }
         }
         key
+    }
+
+    fn get_prev(&self, node: Rc<RefCell<LinkedNode>>) -> Option<Rc<RefCell<LinkedNode>>> {
+        match &node.borrow().prev {
+            Some(prev) => Some(Rc::clone(&prev)),
+            None => None,
+        }
+    }
+
+    fn get_next(&self, node: Rc<RefCell<LinkedNode>>) -> Option<Rc<RefCell<LinkedNode>>> {
+        match &node.borrow().next {
+            Some(next) => Some(Rc::clone(&next)),
+            None => None,
+        }
     }
 }
 
