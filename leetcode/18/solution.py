@@ -1,4 +1,7 @@
-from unittest import main, TestCase
+"""
+https://leetcode.com/problems/4sum/
+18. 4Sum
+"""
 from typing import List
 
 
@@ -38,32 +41,3 @@ class Solution:
                             break
 
         return result
-
-
-class TestSolution(TestCase):
-    s = Solution()
-
-    def test_solution(self):
-        self.assertEqual(
-            self.s.fourSum(nums=[1, 0, -1, 0, -2, 2], target=0),
-            [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]],
-        )
-        self.assertEqual(self.s.fourSum(nums=[2, 2, 2, 2, 2], target=8), [[2, 2, 2, 2]])
-        self.assertEqual(self.s.fourSum([0, 0, 0, 0], 1), [])
-        self.assertEqual(
-            self.s.fourSum([-2, -1, -1, 1, 1, 2, 2], 0),
-            [[-2, -1, 1, 2], [-1, -1, 1, 1]],
-        )
-        """
-        -2, -1,x
-        -2, x,  -1
-        --
-        x, -1, -1,
-        x, -1, -1, -1
-        idx2 - 1 == idx1 and nums[idx1] == nums[idx2] -> do it
-        idx2 - 1 != idx1 and nums[idx2 -1] == nums[idx2] -> skip it
-        """
-
-
-if __name__ == "__main__":
-    main()

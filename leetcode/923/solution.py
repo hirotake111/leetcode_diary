@@ -1,7 +1,7 @@
-from unittest import main, TestCase
-from typing import List
-
 """
+https://leetcode.com/problems/3sum-with-multiplicity/
+923. 3Sum With Multiplicity
+
 Given an integer array arr, and an integer target, 
 return the number of tuples i, j, k such that i < j < k and arr[i] + arr[j] + arr[k] == target.
 Constraints:
@@ -9,6 +9,7 @@ Constraints:
 0 <= arr[i] <= 100
 0 <= target <= 300
 """
+from typing import List
 
 
 class Solution:
@@ -26,21 +27,3 @@ class Solution:
         func(0, 0)
 
         return ans
-
-
-class TestSolution(TestCase):
-    s = Solution()
-
-    def test_solution(self):
-        arr = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5]
-        target = 8
-        expected = 20
-        self.assertEqual(self.s.threeSumMulti(arr, target), expected)
-        arr = [1, 1, 2, 2, 2, 2]
-        target = 5
-        expected = 12
-        self.assertEqual(self.s.threeSumMulti(arr, target), expected)
-
-
-if __name__ == "__main__":
-    main()

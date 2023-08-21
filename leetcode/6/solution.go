@@ -28,7 +28,7 @@ func convert(s string, numRows int) string {
 		if col == 0 || col == numRows-1 {
 			zigzag *= -1
 		}
-		// Increment (or declement) col
+		// Increment (or decrement) col
 		col += zigzag
 	}
 
