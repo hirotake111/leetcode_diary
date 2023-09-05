@@ -1,4 +1,7 @@
-from typing import List, Tuple
+"""
+https://leetcode.com/problems/backspace-string-compare/
+844. Backspace String Compare
+"""
 from unittest import main, TestCase
 
 
