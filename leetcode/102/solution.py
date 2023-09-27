@@ -1,6 +1,9 @@
+"""
+https://leetcode.com/problems/binary-tree-level-order-traversal/
+102. Binary Tree Level Order Traversal
+"""
 from queue import Queue
-from collections import deque
-from typing import Deque, Optional, List, Tuple
+from typing import Optional, List
 
 # Definition for a binary tree node.
 class TreeNode:
