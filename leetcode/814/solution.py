@@ -28,7 +28,7 @@ class Solution:
 
             if node.val == 1:
                 return True
-            # if the result of left or right is true, this node is also nesessary
+            # if the result of left or right is true, this node is also necessary
             return left or right
 
         if not dfs(root):
