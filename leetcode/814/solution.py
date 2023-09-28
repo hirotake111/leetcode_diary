@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/binary-tree-pruning/
+814. Binary Tree Pruning
+"""
 from typing import Optional
 
 # Definition for a binary tree node.
