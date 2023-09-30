@@ -1,5 +1,8 @@
+"""
+https://leetcode.com/problems/binary-tree-right-side-view/description/
+199. Binary Tree Right Side View
+"""
 from queue import Queue
-from tkinter import W
 from typing import Optional, List, Tuple
 
 # Definition for a binary tree node.
