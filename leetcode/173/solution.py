@@ -1,4 +1,8 @@
-from typing import List, Optional, cast
+"""
+https://leetcode.com/problems/binary-search-tree-iterator/
+173. Binary Search Tree Iterator
+"""
+from typing import List, Optional 
 from unittest import main, TestCase
 from queue import Queue
 

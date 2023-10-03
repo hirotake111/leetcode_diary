@@ -1,5 +1,8 @@
-from re import I
-from typing import Dict, List, Tuple
+"""
+https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
+167. Two Sum II - Input array is sorted
+"""
+from typing import List, Tuple
 from unittest import TestCase, main
 
 

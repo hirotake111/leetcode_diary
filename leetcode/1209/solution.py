@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
+1209. Remove All Adjacent Duplicates in String II
+"""
 from typing import List, Tuple
 from unittest import main, TestCase
 
