@@ -6,6 +6,9 @@ from typing import List, Tuple
 from unittest import main, TestCase
 
 
+
+
+
 class Solution:
     def combinationSum3(self, k: int, n: int) -> List[List[int]]:
         ans: List[List[int]] = []
@@ -23,7 +26,7 @@ class Solution:
 
             # if l <= k, continue processing
             if s == n:
-                if l == k:  # found one poosible answer
+                if l == k:  # found one possible answer
                     ans.append(nums)
                 return
             # now we can say s < n
