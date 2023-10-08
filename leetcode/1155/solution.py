@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/number-of-dice-rolls-with-target-sum/
+1155. Number of Dice Rolls With Target Sum
+"""
 from typing import List, Tuple
 from unittest import TestCase, main
 

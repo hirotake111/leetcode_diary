@@ -1,4 +1,9 @@
+"""
+https://leetcode.com/problems/construct-string-from-binary-tree/
+606. Construct String from Binary Tree
+"""
 from typing import Optional
+
 
 # Definition for a binary tree node.
 class TreeNode:
