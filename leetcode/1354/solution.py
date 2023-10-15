@@ -1,6 +1,8 @@
-from audioop import reverse
+"""
+https://leetcode.com/problems/construct-target-array-with-multiple-sums/
+1354. Construct Target Array With Multiple Sums
+"""
 from heapq import heapify, heappop, heappush
-from tkinter import W
 from typing import List, Tuple
 from unittest import TestCase, main
 

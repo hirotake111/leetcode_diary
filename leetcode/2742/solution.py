@@ -3,6 +3,7 @@ https://leetcode.com/problems/painting-the-walls/
 2742. Painting the Walls
 """
 from typing import List
+from functools import lru_cache
 
 
 class Solution:
