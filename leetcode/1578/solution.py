@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/minimum-time-to-make-rope-colorful/
+1578. Minimum Time to Make Rope Colorful
+"""
 from typing import List, Tuple
 from unittest import TestCase, main
 
