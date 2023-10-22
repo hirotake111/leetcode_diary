@@ -3,6 +3,7 @@ https://leetcode.com/problems/parallel-courses-iii/
 2050. Parallel Courses III
 """
 from typing import List
+from functools import lru_cache
 
 
 class Solution:
