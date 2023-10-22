@@ -1,6 +1,9 @@
+"""
+https://leetcode.com/problems/count-of-smaller-numbers-after-self/
+315. Count of Smaller Numbers After Self
+"""
 from collections import defaultdict
-from re import L
-from typing import DefaultDict, Dict, List, Tuple
+from typing import DefaultDict, List, Tuple
 from unittest import TestCase, main
 
 
