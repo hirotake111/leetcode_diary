@@ -3,6 +3,12 @@
 
 package main
 
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
 func findMode(root *TreeNode) []int {
 	// q is a simple version of queue
 	// (Using index i allows us to avoid unnecessary pop operation that costs O(n) complexity in Go)

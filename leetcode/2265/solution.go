@@ -1,11 +1,18 @@
 // https://leetcode.com/problems/count-nodes-equal-to-average-of-subtree/
 // 2265. Count Nodes Equal to Average of Subtree
+package main
 
 func averageOfSubtree(root *TreeNode) int {
 	count := 0
 
 	dfs(root, &count)
 	return count
+}
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
 func dfs(node *TreeNode, rc *int) (int, int) {
