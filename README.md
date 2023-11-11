@@ -1,7 +1,7 @@
-# My LeetCode Diary
+# LeetCode Diary
 
-A place where I put my answer for LeetCode daily challenge as my daily routine 😊
+My daily routine 😊
 
-### Useful links
+I have been tackling [LeetCode Daily Challenge](https://leetcode.com/problemset/all/) as much as possible.
 
-- [14 Patterns to Ace Any Coding Interview Question](https://medium.com/hackernoon/14-patterns-to-ace-any-coding-interview-question-c5bb3357f6ed)
+[My Profile](https://leetcode.com/Hiro111/)
