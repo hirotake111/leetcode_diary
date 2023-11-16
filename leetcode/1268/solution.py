@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/search-suggestions-system/
+1268. Search Suggestions System
+"""
 from collections import defaultdict
 from typing import Dict, List, Tuple
 from unittest import TestCase, main
