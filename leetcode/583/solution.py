@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/delete-operation-for-two-strings/
+583. Delete Operation for Two Strings
+"""
 from typing import List, Tuple
 from unittest import TestCase, main
 

@@ -1,3 +1,9 @@
+"""
+https://leetcode.com/problems/delete-node-in-a-linked-list/
+237. Delete Node in a Linked List
+"""
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -7,10 +13,6 @@ class ListNode:
 
 class Solution:
     def deleteNode(self, node: ListNode):
-        """
-        :type node: ListNode
-        :rtype: void Do not return anything, modify node in-place instead.
-        """
         next_node = node.next
         node.val = next_node.val
         node.next = next_node.next
