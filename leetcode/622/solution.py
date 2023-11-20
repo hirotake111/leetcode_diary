@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/design-circular-queue/
+622. Design Circular Queue
+"""
 from typing import List
 
 
