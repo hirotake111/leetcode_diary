@@ -1,5 +1,8 @@
+"""
+https://leetcode.com/problems/substring-with-concatenation-of-all-words/
+30. Substring with Concatenation of All Words
+"""
 from collections import Counter
-from tkinter import W
 from typing import List, Tuple
 from unittest import TestCase, main
 

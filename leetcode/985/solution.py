@@ -1,6 +1,7 @@
-from functools import reduce
-from getpass import getuser
-from tkinter import W
+"""
+https://leetcode.com/problems/sum-of-even-numbers-after-queries/
+985. Sum of Even Numbers After Queries
+"""
 from typing import List, Tuple
 from unittest import TestCase
 from unittest.main import main
