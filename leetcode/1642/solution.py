@@ -1,3 +1,7 @@
+"""
+https://leetcode.com/problems/furthest-building-you-can-reach/
+1642. Furthest building you can reach
+"""
 import heapq
 from typing import List, Tuple
 from unittest import TestCase, main
