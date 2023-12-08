@@ -15,18 +15,14 @@ class TreeNode:
 
 class Solution:
     def tree2str(self, root: Optional[TreeNode]) -> str:
-        def dfs(node: Optional[TreeNode]) -> str:
-            if node is None:
-                return ""
-            substring = str(node.val)
-            left, right = dfs(node.left), dfs(node.right)
-
-            if not (left or right):
-                return substring
-            substring += f"({left})"
-            if right:
-                substring += f"({right})"
-
-            return substring
-
-        return dfs(root)
+        if root is None:
+            return ""
+        if root.left and root.right:
+            return (
+                f"{root.val}({self.tree2str(root.left)})({self.tree2str(root.right)})"
+            )
+        if root.left:
+            return f"{root.val}({self.tree2str(root.left)})"
+        if root.right:
+            return f"{root.val}()({self.tree2str(root.right)})"
+        return f"{root.val}"
